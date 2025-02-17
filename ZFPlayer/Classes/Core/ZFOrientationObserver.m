@@ -197,6 +197,12 @@
     }
 }
 
+- (void)enterPresentFullScreen:(BOOL)fullScreen animated:(BOOL)animated completion:(void (^ _Nullable)(void))completion {
+    ZFLandscapeViewController *vc = [self.landscapeRotationManager landscapeViewController];
+    UIViewController *rootViewController = [self.containerView.window rootViewController];
+    [rootViewController presentViewController:vc animated:YES completion:nil];
+}
+
 #pragma mark - getter
 
 - (ZFPortraitViewController *)portraitViewController {
@@ -277,6 +283,15 @@
     _fullScreen = fullScreen;
     [self.landscapeRotationManager.landscapeViewController setNeedsStatusBarAppearanceUpdate];
     [UIViewController attemptRotationToDeviceOrientation];
+}
+
+- (void)setFullScreenMode:(ZFFullScreenMode)fullScreenMode {
+    _fullScreenMode = fullScreenMode;
+    
+    if (fullScreenMode == ZFFullScreenModeLandscapePresent) {
+        ZFLandscapeViewController *vc = [self.landscapeRotationManager landscapeViewController];
+        vc.supportedOrientations = UIInterfaceOrientationMaskLandscapeRight;
+    }
 }
 
 - (void)setFullScreenStatusBarHidden:(BOOL)fullScreenStatusBarHidden {

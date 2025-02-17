@@ -41,11 +41,15 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic, assign) BOOL disableAnimations;
 
 @property (nonatomic, assign) BOOL statusBarHidden;
+
 /// default is  UIStatusBarStyleLightContent.
 @property (nonatomic, assign) UIStatusBarStyle statusBarStyle;
-/// defalut is UIStatusBarAnimationSlide.
+
+/// default is UIStatusBarAnimationSlide.
 @property (nonatomic, assign) UIStatusBarAnimation statusBarAnimation;
 
+/// default is UIInterfaceOrientationMaskAllButUpsideDown
+@property (nonatomic, assign) UIInterfaceOrientationMask supportedOrientations;
 @end
 
 NS_ASSUME_NONNULL_END

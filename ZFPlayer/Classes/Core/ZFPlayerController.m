@@ -862,6 +862,8 @@ static NSMutableDictionary <NSString* ,NSNumber *> *_zfPlayRecords;
 - (void)enterFullScreen:(BOOL)fullScreen animated:(BOOL)animated completion:(void (^ _Nullable)(void))completion {
     if (self.orientationObserver.fullScreenMode == ZFFullScreenModePortrait) {
         [self.orientationObserver enterPortraitFullScreen:fullScreen animated:animated completion:completion];
+    } else if (self.orientationObserver.fullScreenMode == ZFFullScreenModeLandscapePresent) {
+        [self.orientationObserver enterPresentFullScreen:fullScreen animated:animated completion:completion];
     } else {
         UIInterfaceOrientation orientation = UIInterfaceOrientationUnknown;
         orientation = fullScreen? UIInterfaceOrientationLandscapeRight : UIInterfaceOrientationPortrait;

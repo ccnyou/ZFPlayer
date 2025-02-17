@@ -29,9 +29,10 @@ NS_ASSUME_NONNULL_BEGIN
 
 /// Full screen mode
 typedef NS_ENUM(NSUInteger, ZFFullScreenMode) {
-    ZFFullScreenModeAutomatic,  // Determine full screen mode automatically
-    ZFFullScreenModeLandscape,  // Landscape full screen mode
-    ZFFullScreenModePortrait    // Portrait full screen Model
+    ZFFullScreenModeAutomatic,          // Determine full screen mode automatically
+    ZFFullScreenModeLandscape,          // Landscape full screen mode
+    ZFFullScreenModePortrait,           // Portrait full screen Model
+    ZFFullScreenModeLandscapePresent,   // 使用横屏VC present 的方式支持全屏
 };
 
 /// Portrait full screen mode.
@@ -158,6 +159,8 @@ typedef NS_OPTIONS(NSUInteger, ZFDisablePortraitGestureTypes) {
 
 /// FullScreen mode is determined by ZFFullScreenMode.
 - (void)enterFullScreen:(BOOL)fullScreen animated:(BOOL)animated completion:(void (^ _Nullable)(void))completion;
+
+- (void)enterPresentFullScreen:(BOOL)fullScreen animated:(BOOL)animated completion:(void (^ _Nullable)(void))completion;
 
 @end
 

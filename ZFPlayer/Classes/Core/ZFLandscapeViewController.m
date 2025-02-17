@@ -34,6 +34,7 @@
     if (self) {
         _statusBarStyle = UIStatusBarStyleLightContent;
         _statusBarAnimation = UIStatusBarAnimationSlide;
+        _supportedOrientations = UIInterfaceOrientationMaskAllButUpsideDown;
     }
     return self;
 }
@@ -46,7 +47,8 @@
 }
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
-    return UIInterfaceOrientationMaskAllButUpsideDown;
+    // TODO: CCN 修复参数传递问题后，使用 self.supportedOrientations
+    return UIInterfaceOrientationMaskLandscapeRight;
 }
 
 - (BOOL)prefersHomeIndicatorAutoHidden {
