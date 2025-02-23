@@ -317,6 +317,9 @@ NS_ASSUME_NONNULL_BEGIN
 /// The fullscreen statusbar hidden.
 @property (nonatomic, getter=isStatusBarHidden) BOOL statusBarHidden;
 
+/// The fullscreen mode
+@property (nonatomic, assign) ZFFullScreenMode fullScreenMode;
+
 /**
  Add the device orientation observer.
  */

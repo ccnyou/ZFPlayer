@@ -997,6 +997,14 @@ static NSMutableDictionary <NSString* ,NSNumber *> *_zfPlayRecords;
     self.orientationObserver.fullScreenStatusBarAnimation = fullScreenStatusBarAnimation;
 }
 
+- (ZFFullScreenMode)fullScreenMode {
+    return self.orientationObserver.fullScreenMode;
+}
+
+- (void)setFullScreenMode:(ZFFullScreenMode)fullScreenMode {
+    [self.orientationObserver setFullScreenMode:fullScreenMode];
+}
+
 @end
 
 

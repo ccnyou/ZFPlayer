@@ -198,9 +198,10 @@
 }
 
 - (void)enterPresentFullScreen:(BOOL)fullScreen animated:(BOOL)animated completion:(void (^ _Nullable)(void))completion {
-    ZFLandscapeViewController *vc = [self.landscapeRotationManager landscapeViewController];
-    UIViewController *rootViewController = [self.containerView.window rootViewController];
-    [rootViewController presentViewController:vc animated:YES completion:nil];
+//    ZFLandscapeViewController *vc = [self.landscapeRotationManager landscapeViewController];
+//    UIViewController *rootViewController = [self.containerView.window rootViewController];
+//    [rootViewController presentViewController:vc animated:YES completion:nil];
+    [self rotateToOrientation:UIInterfaceOrientationLandscapeRight animated:animated completion:completion];
 }
 
 #pragma mark - getter
@@ -256,6 +257,8 @@
         return self.landscapeRotationManager.fullScreenContainerView;
     } else if (self.fullScreenMode == ZFFullScreenModePortrait) {
         return self.portraitViewController.view;
+    } else if (self.fullScreenMode == ZFFullScreenModeLandscapePresent) {
+        return self.landscapeRotationManager.fullScreenContainerView;
     }
     return nil;
 }
@@ -263,7 +266,10 @@
 - (UIInterfaceOrientation)currentOrientation {
     if (self.fullScreenMode == ZFFullScreenModeLandscape) {
         return self.landscapeRotationManager.currentOrientation;
+    } else if (self.fullScreenMode == ZFFullScreenModeLandscapePresent) {
+        return self.landscapeRotationManager.currentOrientation;
     }
+    
     return [self.landscapeRotationManager getCurrentOrientation];
 }
 
@@ -302,6 +308,9 @@
     } else if (self.fullScreenMode == ZFFullScreenModeLandscape) {
         self.landscapeRotationManager.landscapeViewController.statusBarHidden = fullScreenStatusBarHidden;
         [self.landscapeRotationManager.landscapeViewController setNeedsStatusBarAppearanceUpdate];
+    } else if (self.fullScreenMode == ZFFullScreenModeLandscapePresent) {
+        self.landscapeRotationManager.landscapeViewController.statusBarHidden = fullScreenStatusBarHidden;
+        [self.landscapeRotationManager.landscapeViewController setNeedsStatusBarAppearanceUpdate];
     }
 }
 
@@ -313,6 +322,9 @@
     } else if (self.fullScreenMode == ZFFullScreenModeLandscape) {
         self.landscapeRotationManager.landscapeViewController.statusBarStyle = fullScreenStatusBarStyle;
         [self.landscapeRotationManager.landscapeViewController setNeedsStatusBarAppearanceUpdate];
+    } else if (self.fullScreenMode == ZFFullScreenModeLandscapePresent) {
+        self.landscapeRotationManager.landscapeViewController.statusBarStyle = fullScreenStatusBarStyle;
+        [self.landscapeRotationManager.landscapeViewController setNeedsStatusBarAppearanceUpdate];
     }
 }
 
@@ -322,6 +334,9 @@
         self.portraitViewController.statusBarAnimation = fullScreenStatusBarAnimation;
         [self.portraitViewController setNeedsStatusBarAppearanceUpdate];
     } else if (self.fullScreenMode == ZFFullScreenModeLandscape) {
+        self.landscapeRotationManager.landscapeViewController.statusBarAnimation = fullScreenStatusBarAnimation;
+        [self.landscapeRotationManager.landscapeViewController setNeedsStatusBarAppearanceUpdate];
+    } else if (self.fullScreenMode == ZFFullScreenModeLandscapePresent) {
         self.landscapeRotationManager.landscapeViewController.statusBarAnimation = fullScreenStatusBarAnimation;
         [self.landscapeRotationManager.landscapeViewController setNeedsStatusBarAppearanceUpdate];
     }
@@ -346,6 +361,8 @@
         self.landscapeRotationManager.contentView = view;
     } else if (self.fullScreenMode == ZFFullScreenModePortrait) {
         self.portraitViewController.contentView = view;
+    } else if (self.fullScreenMode == ZFFullScreenModeLandscapePresent) {
+        self.landscapeRotationManager.contentView = view;
     }
 }
 
@@ -356,6 +373,8 @@
         self.landscapeRotationManager.containerView = containerView;
     } else if (self.fullScreenMode == ZFFullScreenModePortrait) {
         self.portraitViewController.containerView = containerView;
+    } else if (self.fullScreenMode == ZFFullScreenModeLandscapePresent) {
+        self.landscapeRotationManager.containerView = containerView;
     }
 }
 

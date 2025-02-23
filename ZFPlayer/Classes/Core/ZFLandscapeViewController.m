@@ -47,8 +47,10 @@
 }
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
+    NSLog(@"ccccc %s,%d get", __FUNCTION__, __LINE__);
     // TODO: CCN 修复参数传递问题后，使用 self.supportedOrientations
     return UIInterfaceOrientationMaskLandscapeRight;
+//    return self.supportedOrientations;
 }
 
 - (BOOL)prefersHomeIndicatorAutoHidden {
