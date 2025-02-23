@@ -46,7 +46,7 @@
 }
 
 - (UIInterfaceOrientationMask)supportedInterfaceOrientations {
-    return UIInterfaceOrientationMaskAllButUpsideDown;
+    return UIInterfaceOrientationMaskLandscapeRight;
 }
 
 - (BOOL)prefersHomeIndicatorAutoHidden {
